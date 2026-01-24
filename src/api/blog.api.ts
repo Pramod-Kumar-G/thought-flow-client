@@ -1,12 +1,7 @@
 import axios from "axios";
+import type { Blog } from "@/types/blog";
 
 const baseUrl = "http://localhost:3000/api/blogs";
-
-export type Blog = {
-  id: number;
-  title: string;
-  content: string;
-};
 
 export const getAll = async (): Promise<Blog[]> => {
   const res = await axios.get(baseUrl);
