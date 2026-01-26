@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "@/api/auth.api";
+// import { useNavigate } from "react-router-dom";
 
 export function LoginForm({
   className,
@@ -24,11 +25,17 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (res) => {
       console.log(res);
+      // props.setUser(res.data);
+
+      window.location.href = "/";
+      // window.location.reload();
+      // navigate("/");
     },
   });
 
