@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAll } from "../api/blog.api";
 import type { Blog } from "../types/blog";
+import BlogDetails from "@/components/BlogDetails";
 
 const Home = () => {
   const { data: blogs, isSuccess } = useQuery({
@@ -14,12 +15,11 @@ const Home = () => {
   }
   return (
     <div>
-      {blogs.map((blog: Blog) => (
-        <div key={blog.id}>
-          {blog.title}
-          {blog.content}
-        </div>
-      ))}
+      <div className="grid grid-cols-3 gap-6 p-6">
+        {blogs.map((blog: Blog) => (
+          <BlogDetails key={blog.id} blog={blog} />
+        ))}
+      </div>
     </div>
   );
 };
