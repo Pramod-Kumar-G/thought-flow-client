@@ -1,11 +1,12 @@
 import LoginPage from "./pages/LoginPage";
-import { Route, Routes, Link, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AddBlog from "./pages/AddBlog";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import type { AuthUser } from "./types/user";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -33,15 +34,7 @@ const App = () => {
 
   return (
     <div>
-      <div className="flex justify-between bg-secondary px-4 py-3">
-        <Link to={"/"}>
-          <div className="text-2xl">ThoughFlow</div>
-        </Link>
-        <div className="flex items-center gap-4">
-          <Link to={"/new-blog"}>Add Blog</Link>
-          <div>{user?.username}</div>
-        </div>
-      </div>
+      <Navbar />
       <Routes>
         <Route element={<PrivateRoutes user={user} />}>
           <Route index element={<Home />} />
