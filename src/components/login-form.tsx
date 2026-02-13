@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "@/api/auth.api";
+import { login } from "@/features/auth/api/auth.api";
 // import { useNavigate } from "react-router-dom";
 
 export function LoginForm({

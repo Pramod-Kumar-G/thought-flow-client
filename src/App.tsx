@@ -1,4 +1,4 @@
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./features/auth/routes/LoginPage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
