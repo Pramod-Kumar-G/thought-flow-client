@@ -1,12 +1,12 @@
 import type { Blog } from "@/types/blog";
-import { Button } from "./ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../../../components/ui/card";
 
 const BlogDetails = ({ blog }: { blog: Blog }) => {
   return (

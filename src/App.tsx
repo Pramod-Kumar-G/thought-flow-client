@@ -3,10 +3,10 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddBlog from "./pages/AddBlog";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import type { AuthUser } from "./types/user";
 import Navbar from "./components/Navbar";
+import AddBlog from "./features/blog/routes/AddBlog";
 
 const App = () => {
   const [user, setUser] = useState<AuthUser | null>(null);

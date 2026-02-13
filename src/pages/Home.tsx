@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAll } from "../api/blog.api";
 import type { Blog } from "../types/blog";
-import BlogDetails from "@/components/BlogDetails";
+import BlogDetails from "@/features/blog/components/BlogDetails";
+import { getAll } from "@/features/blog/api/blog.api";
 
 const Home = () => {
   const { data: blogs, isSuccess } = useQuery({
