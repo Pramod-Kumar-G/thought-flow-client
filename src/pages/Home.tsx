@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
+import { useBlogs } from "@/features/blog/hooks/useBlogs";
 import type { Blog } from "../types/blog";
 import BlogDetails from "@/features/blog/components/BlogDetails";
-import { getAll } from "@/features/blog/api/blog.api";
 
 const Home = () => {
-  const { data: blogs, isSuccess } = useQuery({
-    queryKey: ["blogs"],
-    queryFn: getAll,
-  });
+  const { data: blogs, isSuccess } = useBlogs();
 
   if (!isSuccess) {
     console.log("loading...");

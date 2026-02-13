@@ -1,9 +1,11 @@
-import axios from "axios";
-import type { Blog } from "@/types/blog";
+import { api } from "@/lib/api-client";
 
-const baseUrl = "http://localhost:3000/api/blogs";
-
-export const getAll = async (): Promise<Blog[]> => {
-  const res = await axios.get(baseUrl);
+export const getAll = async () => {
+  const res = await api.get("/blogs");
   return res.data;
+};
+
+export const createBlog = async (data: { title: string; content: string }) => {
+  const res = await api.post("/blogs", data);
+  return res;
 };

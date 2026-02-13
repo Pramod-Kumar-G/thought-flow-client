@@ -1,24 +1,17 @@
 import { useState } from "react";
-import axios from "axios";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useCreateBlog } from "../hooks/useCreateBlogs";
 
 const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { mutate, isPending } = useCreateBlog();
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const res = await axios.post(
-      "http://localhost:3000/api/blogs",
-      {
-        title,
-        content,
-      },
-      { withCredentials: true },
-    );
-    console.log(res.data);
+    mutate({ title, content });
   };
 
   return (
@@ -46,7 +39,9 @@ const AddBlog = () => {
             required
           />
         </Field>
-        <Button type="submit">Add blog</Button>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? "Adding..." : "Add blog"}
+        </Button>
       </form>
     </div>
   );
