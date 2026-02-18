@@ -1,34 +1,16 @@
 import LoginPage from "./features/auth/routes/LoginPage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import PrivateRoutes from "./pages/PrivateRoutes";
-import type { AuthUser } from "./types/user";
 import Navbar from "./components/Navbar";
 import AddBlog from "./features/blog/routes/AddBlog";
+import { useMe } from "./features/auth/hooks/useMe";
 
 const App = () => {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: user, isLoading } = useMe();
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  useEffect(() => {
-    axios
-      .get<AuthUser>(`${API_BASE_URL}/users/profile`, { withCredentials: true })
-      .then((res) => {
-        console.log(res.data);
-        setUser(res.data);
-      })
-      .catch(() => {
-        setUser(null);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [API_BASE_URL]);
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
