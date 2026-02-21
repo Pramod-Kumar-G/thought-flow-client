@@ -1,7 +1,6 @@
 import LoginPage from "./features/auth/routes/LoginPage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import { useEffect } from "react";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import Navbar from "./components/Navbar";
 import AddBlog from "./features/blog/routes/AddBlog";
@@ -16,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar user={user} />
       <Routes>
         <Route element={<PrivateRoutes user={user} />}>
           <Route index element={<Home />} />

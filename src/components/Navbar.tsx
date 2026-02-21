@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <header className="border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -33,13 +33,26 @@ const Navbar = () => {
         </nav>
 
         {/* Auth Buttons */}
+
         <div className="flex items-center gap-2">
-          <Button variant="ghost">
-            <Link to={"/login"}>Login</Link>
-          </Button>
-          <Button>
-            <Link to={"/signup"}>Sign Up</Link>
-          </Button>
+          {user ? (
+            <Button
+              onClick={() => {
+                console.log("logout");
+              }}
+            >
+              Logout
+            </Button>
+          ) : (
+            <div>
+              <Button variant="ghost">
+                <Link to={"/login"}>Login</Link>
+              </Button>
+              <Button>
+                <Link to={"/signup"}>Sign Up</Link>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </header>
