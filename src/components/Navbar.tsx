@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { useLogout } from "@/features/auth/hooks/useLogout";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ user }) => {
+  const { mutate } = useLogout();
   return (
     <header className="border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -38,7 +40,7 @@ const Navbar = ({ user }) => {
           {user ? (
             <Button
               onClick={() => {
-                console.log("logout");
+                mutate();
               }}
             >
               Logout

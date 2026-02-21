@@ -6,7 +6,6 @@ const Home = () => {
   const { data: blogs, isSuccess } = useBlogs();
 
   if (!isSuccess) {
-    console.log("loading...");
     return <div>loading...</div>;
   }
   return (
